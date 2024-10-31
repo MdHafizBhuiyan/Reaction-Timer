@@ -1,18 +1,17 @@
 <template>
-  <h1>Hafiz Reaction Timer</h1>
+  <h1 class="heading">Hafiz Reaction Timer</h1>
  <button @click="start"  :disabled="isPlaying">Play</button>
  <Block v-if="isPlaying" :delay="delay" @end="endGame"/>
- <p v-if="showResults">Reaction Time: {{ score }} ms</p>
+ <Results v-if="showResults" :score="score"/>
 </template>
 
 <script>
 import Block from './components/Block.vue';
-
-
+import Results from './components/Results.vue';
 
 export default {
   name: 'App',
-  components: {Block},
+  components: {Block, Results},
   data () {
     return {
       isPlaying : false,
@@ -45,5 +44,24 @@ export default {
   text-align: center;
   color: #444;
   margin-top: 60px;
+}
+button{
+  background:aquamarine;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin: 10px;
+}
+button[disabled] {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+.heading{
+  font-size: 1.2em;
+  color: rgb(207, 49, 86);
+  font-weight: bold;
 }
 </style>
